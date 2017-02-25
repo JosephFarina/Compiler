@@ -17,8 +17,15 @@ declare type TokenType =
   ')' |
   '{' |
   '}' |
-  'FUNCTION' |
-  'LET'
+  '==' |
+  '!=' |
+  'FUNCTION'  |
+  'LET'       |
+  'FALSE'     |
+  'TRUE'      |
+  'IF'        |
+  'ELSE'      |
+  'RETURN'
 
 interface Token {
   type: TokenType

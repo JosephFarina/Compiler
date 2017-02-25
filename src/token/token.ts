@@ -26,12 +26,24 @@ export const RPAREN: TokenType = ')'
 export const LBRACE: TokenType = '{'
 export const RBRACE: TokenType = '}'
 
-export const FUNCTION = 'FUNCTION'
-export const LET = 'LET'
+export const FUNCTION: TokenType = 'FUNCTION'
+export const LET: TokenType = 'LET'
+export const TRUE: TokenType = 'TRUE'
+export const FALSE: TokenType = 'FALSE'
+export const IF: TokenType = 'IF'
+export const ELSE: TokenType = 'ELSE'
+export const RETURN: TokenType = 'RETURN'
+export const EQ: TokenType = '=='
+export const NOT_EQ: TokenType = '!='
 
-const identKeywords = {
+const identKeywords: { [id: string]: TokenType } = {
   fn: FUNCTION,
-  let: LET
+  let: LET,
+  true: TRUE,
+  false: FALSE,
+  if: IF,
+  else: ELSE,
+  return: RETURN
 }
 
 export function lookupIdent(literal: string): TokenType {

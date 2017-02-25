@@ -20,15 +20,15 @@ export class Lexer {
 
     switch (this.ch) {
       case '=':
-        tok = tokenFromType(token.ASSIGN)
+        tok = this.makeTwoCharToken(token.EQ, token.ASSIGN, '=')
+        break;
+
+      case '!':
+        tok = this.makeTwoCharToken(token.NOT_EQ, token.BANG, '=')
         break;
 
       case ';':
         tok = tokenFromType(token.SEMICOLON)
-        break;
-
-      case '!':
-        tok = tokenFromType(token.BANG)
         break;
 
       case '(':
@@ -107,6 +107,24 @@ export class Lexer {
 
     this.position = this.readPosition
     this.readPosition++
+  }
+
+  private peakChar(): string {
+    if (this.readPosition >= this.input.length) {
+      return null
+    } else {
+      return this.input[this.readPosition]
+    }
+  }
+
+  private makeTwoCharToken(tokenIf: TokenType, tokenIfNot: TokenType, lookingFor: string): Token {
+    if (this.peakChar() == lookingFor) {
+      const ch = this.ch
+      this.readChar()
+      return token.newToken(`${ch}${this.ch}`, tokenIf)
+    } else {
+      return token.newToken(this.ch, tokenIfNot)
+    }
   }
 
   private readIdentifier() {
