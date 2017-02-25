@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc --watch",
-    "test": "mocha --watch"
+    "test": "mocha --watch ./dist/test"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +15,8 @@
     "@types/node": "^7.0.5",
     "@types/ramda": "0.0.3",
     "chai": "^3.5.0",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "typescript": "^2.2.1"
   },
   "dependencies": {
     "ramda": "^0.23.0"

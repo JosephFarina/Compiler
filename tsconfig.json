@@ -1,9 +1,15 @@
 {
     "compilerOptions": {
-        "emitDecoratorMetadata": true,
         "module": "commonjs",
         "target": "ES5",
+        "rootDir": "./src",
         "sourceMap": true,
-        "outDir": "dist"
-    }
+        "sourceRoot": "src",
+        "outDir": "./dist"
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
 }
+

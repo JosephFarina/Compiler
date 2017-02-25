@@ -1,13 +1,6 @@
-export class Token {
-  type: TokenType
-  literal: string
+import { curry } from 'ramda'
 
-  constructor(type: TokenType, ch: string) {
-    this.type = type
-    this.literal = ch
-  }
-}
-
+export const newToken = curry((literal: string, type: TokenType): Token => ({ literal, type }))
 
 export const ILLEGAL: TokenType = 'ILLEGAL'
 export const EOF: TokenType = 'EOF'
@@ -29,18 +22,11 @@ export const RBRACE: TokenType = '}'
 export const FUNCTION = 'FUNCTION'
 export const LET = 'LET'
 
-export declare type TokenType =
-  'ILLEGAL' |
-  'EOF' |
-  'IDENT' |
-  'INT' |
-  '=' |
-  '+' |
-  ',' |
-  ';' |
-  '(' |
-  ')' |
-  '{' |
-  '}' |
-  'FUNCTION' |
-  'LET'
+const identKeywords = {
+  fn: FUNCTION,
+  let: LET
+}
+
+export function lookupIdent(literal: string): TokenType {
+  return identKeywords[literal] ? identKeywords[literal] : IDENT
+}

@@ -5,20 +5,24 @@ import * as token from './../token/token'
 import { Lexer } from './../lexer/lexer'
 
 describe('lexer', function () {
-  const input = '=+(){},;'
-  const tests: [
-    token.TokenType, string
-  ][] = [
-      [token.ASSIGN, '='],
-      [token.PLUS, '+'],
-      [token.LPAREN, '('],
-      [token.RPAREN, ')'],
-      [token.LBRACE, '{'],
-      [token.RBRACE, '}'],
-      [token.COMMA, ','],
-      [token.SEMICOLON, ';'],
-      [token.EOF, '']
-    ]
+  const input = ` 
+  let five = 5;
+  `
+
+  const tests: [TokenType, string][] = [
+    [token.LET, 'let'],
+    [token.IDENT, 'five'],
+    [token.ASSIGN, '='],
+    [token.INT, '5'],
+    [token.SEMICOLON, ';'],
+    [token.EOF, '']
+    // [token.PLUS, '+'],
+    // [token.LPAREN, '('],
+    // [token.RPAREN, ')'],
+    // [token.LBRACE, '{'],
+    // [token.RBRACE, '}'],
+    // [token.COMMA, ','],
+  ]
 
   const l = new Lexer(input)
 
@@ -34,5 +38,6 @@ describe('lexer', function () {
       expect(tok.literal).to.equal(expectedLiteral)
     })
   })
+
 })
 
