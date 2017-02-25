@@ -61,6 +61,10 @@ export class Lexer {
           const ident = token.lookupIdent(literal)
           tok = token.newToken(literal, ident)
           return tok
+        } else if (this.isDigit(this.ch)) {
+          const literal = this.readInt()
+          tok = token.newToken(literal, token.INT)
+          return tok
         } else {
           tok = tokenFromType(token.ILLEGAL)
         }
@@ -90,6 +94,15 @@ export class Lexer {
     return this.input.slice(position, this.position)
   }
 
+  private readInt() {
+    const position = this.position
+    while(this.isDigit(this.ch)) {
+      this.readChar()
+    }
+
+    return this.input.slice(position, this.position)
+  }
+
   private eatWhiteSpace() {
     while (/( |\n|\t|\r)/.test(this.ch)) {
       this.readChar()
@@ -102,6 +115,10 @@ export class Lexer {
       ('A' <= ch && ch <= 'Z') ||
       ch === '_' || ch === '-'
     )
+  }
+
+  private isDigit(ch: string) {
+    return '0' <= ch && ch <= '9'
   }
 }
 
