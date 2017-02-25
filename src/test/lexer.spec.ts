@@ -12,7 +12,13 @@ describe('lexer', function () {
   let add = fn(x, y) {
     x + y;
   }
+
+  let result = add(five, ten);
+
+  !-/*5
+  5 < 10 > 5;
   `
+
 
   const tests: [TokenType, string][] = [
     [token.LET, 'let'],
@@ -44,13 +50,30 @@ describe('lexer', function () {
     [token.SEMICOLON, ';'],
     [token.RBRACE, '}'],
 
+    [token.LET, 'let'],
+    [token.IDENT, 'result'],
+    [token.ASSIGN, '='],
+    [token.IDENT, 'add'],
+    [token.LPAREN, '('],
+    [token.IDENT, 'five'],
+    [token.COMMA, ','],
+    [token.IDENT, 'ten'],
+    [token.RPAREN, ')'],
+    [token.SEMICOLON, ';'],
+
+    [token.BANG, '!'],
+    [token.MINUS, '-'],
+    [token.SLASH, '/'],
+    [token.ASTERISK, '*'],
+    [token.INT, '5'],
+    [token.INT, '5'],
+    [token.LT, '<'],
+    [token.INT, '10'],
+    [token.GT, '>'],
+    [token.INT, '5'],
+    [token.SEMICOLON, ';'],
+
     [token.EOF, ''],
-    // [token.PLUS, '+'],
-    // [token.LPAREN, '('],
-    // [token.RPAREN, ')'],
-    // [token.LBRACE, '{'],
-    // [token.RBRACE, '}'],
-    // [token.COMMA, ','],
   ]
 
   const l = new Lexer(input)

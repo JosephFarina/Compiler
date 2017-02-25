@@ -27,6 +27,10 @@ export class Lexer {
         tok = tokenFromType(token.SEMICOLON)
         break;
 
+      case '!':
+        tok = tokenFromType(token.BANG)
+        break;
+
       case '(':
         tok = tokenFromType(token.LPAREN)
         break;
@@ -42,6 +46,26 @@ export class Lexer {
       case '+':
         tok = tokenFromType(token.PLUS)
         break;
+
+      case '-':
+        tok = tokenFromType(token.MINUS)
+        break;
+
+      case '/':
+        tok = tokenFromType(token.SLASH)
+        break
+
+      case '*':
+        tok = tokenFromType(token.ASTERISK)
+        break
+
+      case '<':
+        tok = tokenFromType(token.LT)
+        break
+
+      case '>':
+        tok = tokenFromType(token.GT)
+        break
 
       case '{':
         tok = tokenFromType(token.LBRACE)
@@ -96,7 +120,7 @@ export class Lexer {
 
   private readInt() {
     const position = this.position
-    while(this.isDigit(this.ch)) {
+    while (this.isDigit(this.ch)) {
       this.readChar()
     }
 

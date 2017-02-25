@@ -10,6 +10,13 @@ export const INT: TokenType = 'INT'
 
 export const ASSIGN: TokenType = '='
 export const PLUS: TokenType = '+'
+export const MINUS: TokenType = '-'
+export const SLASH: TokenType = '/'
+
+export const BANG: TokenType = '!'
+export const ASTERISK: TokenType = '*'
+export const LT: TokenType = '<'
+export const GT: TokenType = '>'
 
 export const COMMA: TokenType = ','
 export const SEMICOLON: TokenType = ';'
