@@ -1,8 +1,8 @@
 import * as chai from 'chai'
 const expect = chai.expect
 
-import * as token from './../token/token'
-import { Lexer } from './../lexer/lexer'
+import * as token from './../token'
+import { Lexer } from './../lexer'
 
 describe('lexer', function () {
   const input = ` 

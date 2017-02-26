@@ -1,5 +1,5 @@
 import { curry } from 'ramda'
-import * as token from './../token/token'
+import * as token from './../token'
 
 export class Lexer {
   input: string = ''
