@@ -19,6 +19,10 @@ export class LetStatement implements Statement {
   name: Identifier
   value: Expression
 
+  constructor({token}: { token: Token }) {
+    this.token = token
+  }
+
   statementNode() {
     return
   }
@@ -31,6 +35,11 @@ export class LetStatement implements Statement {
 export class Identifier implements Expression {
   token: Token
   value: string
+
+  constructor({token, value}: { token: Token, value: string }) {
+    this.token = token
+    this.value = value
+  }
 
   expressionNode() {
     return
